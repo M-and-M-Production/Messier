@@ -35,6 +35,7 @@ public class MessierObject {
     private static String toUnits(double integer, int depth, String units) {
         //gonna ignore the rules
         if (depth > 1) {integer = Math.abs(integer);
+        
             return String.format("%.3f", integer);
             }
         double number = Math.floor(integer);
