@@ -41,6 +41,21 @@ public class MessierObject {
         double number = Math.floor(integer);
         return new String(number+""+units.charAt(depth)+" ") + toUnits((integer%1)*60, depth+1,units);
     }
+	/**
+	 * This method is used to convert the degrees into (Hour, Minutes, Seconds) or (Degrees, Arcmin, Arcsec)!. 
+	 * Knowledge used:
+	 * Degrees = 60 Arcmin
+	 * Arcmin = 60 Arcsec
+	 * Hour, Minutes, Seconds are synonyms of Degrees, Arcmin, Arcsec
+	 * 
+	 * DESCRIBE IT MAYBE?
+	**/
+	private static String toUnitsBetter (double UnitInTime, String units) {	
+		double number;
+		for (int i = 0; i < 3; i++) {
+			number = Math.floor(integer); 
+			UnitInTime = (UnitInTime%1)*60 // get the remainder and multiply by 60
+	}
 
 @Override
     public String toString()
@@ -57,3 +72,6 @@ public class MessierObject {
 
     }
 }
+
+// make a branch, make a commit and push it to github
+
