@@ -58,12 +58,13 @@ public class MessierObject {
 		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < 2; i++) {
 			result.append(Math.floor(UnitInTime) + units.getUnit(i) + " "); // Append the number and the unit
-			UnitInTime = (UnitInTime%1)*60 // get the remainder and multiply by 60
+			UnitInTime = (UnitInTime%1)*60; // get the remainder and multiply by 60
 		}
 		// append the last unit rounded to 2 decimal places with the last unit
 		result.append(String.format("%.2f", UnitInTime) + units.getUnit(2));
 		return result.toString();
 	}
+    @Override
 	public String toString() {
 		return String.format("%d %s %s %s %.2f %s %.2f %s %s", messierNumber,
 				ngcic, name, type, distance, constellation, magnitude,
@@ -84,33 +85,33 @@ public class MessierObject {
 	 * since the previous iteration accepted a string without any checks. 
 	 * this enum will be used to make sure that any future maintainer will not make a mistake and input the wrong string.
 	**/
-	enum DegreesUnits {
+	public enum DegreesUnits {
 		DMS("°'\""),
-		HMS("HMS"),
-		String units;
-		final String getUnit(int index) {
-			return units.charAt(index);
-		};
-
-		Units(String units) {
-			this.units = units;
+		HMS("HMS");
+        
+        public final String units;
+		private DegreesUnits(String units) {
+            this.units = units;
 		}
-
+        public String getUnit(int index) {
+            return units.charAt(index);
+        };
+        
 	}
 
 
 
 
-@Override
-    public String toString()
-    {
-        String ascString = toUnits(ascension, 0, new String("HMS"));
-        String decString = toUnits(declination, 0,new String("°'yi\""));
-        String output;
+// @Override
+//     public String toString()
+//     {
+//         String ascString = toUnits(ascension, 0, new String("HMS"));
+//         String decString = toUnits(declination, 0,new String("°'yi\""));
+//         String output;
 
-        output = messierNumber+" " +ngcic+" " +name+" " +type+" " +distance+" " +constellation+" " +magnitude+" " +ascString+" " +decString;
-        return output;
-    }
+//         output = messierNumber+" " +ngcic+" " +name+" " +type+" " +distance+" " +constellation+" " +magnitude+" " +ascString+" " +decString;
+//         return output;
+//     }
 
     public static void main(String[] args) {
 
