@@ -87,7 +87,7 @@ public class MessierObject {
 	enum DegreesUnits {
 		DMS("°'\""),
 		HMS("HMS"),
-		
+		String units;
 		final String getUnit(int index) {
 			return units.charAt(index);
 		};
