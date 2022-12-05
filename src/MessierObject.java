@@ -54,7 +54,6 @@ public class MessierObject {
 	 * DESCRIBE IT MAYBE?
 	**/
 	private static String toUnitsBetter (double UnitInTime, DegreesUnits units) {	
-		double number;
 		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < 2; i++) {
 			result.append(Math.floor(UnitInTime) + units.getUnit(i) + " "); // Append the number and the unit
@@ -93,7 +92,7 @@ public class MessierObject {
 		private DegreesUnits(String units) {
             this.units = units;
 		}
-        public String getUnit(int index) {
+        public char getUnit(int index) {
             return units.charAt(index);
         };
         
