@@ -1,8 +1,8 @@
 public class MessierObject {
 
-    int messierNumber;
+    String messierNumber;
     String ngcic; // can be None
-    String name; // can be None
+    static String name; // can be None
     String type;
     double distance;
     String constellation;
@@ -18,7 +18,20 @@ public class MessierObject {
     // }
     // }
 
-    public MessierObject(int messierNum, String ngcic, String name,
+    public MessierObject(){}
+    public MessierObject(String messierNum){
+        messierNumber = messierNum;
+    }
+    public MessierObject(String messierNum, String ngcic, String name,
+    String starType, double dist) {
+messierNumber = messierNum;
+this.ngcic = ngcic;
+this.name = name;
+type = starType;
+distance = dist;
+    }
+
+    public MessierObject(String messierNum, String ngcic, String name,
             String starType, double dist, String constellation,
             double appMagnitude, double rightAscension, double declination) {
         messierNumber = messierNum;

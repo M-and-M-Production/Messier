@@ -13,7 +13,7 @@ public class App {
         System.out.println(toUnits(num, 0, new String("HMS")));
 
 
-        MessierObject tObject = new MessierObject(1,"NGC 1925","Crab Nebula","Supernova remenanat",8.1,"Taurus",8.4,5.5755,79252.2);
+        MessierObject tObject = new MessierObject("M1","NGC 1925","Crab Nebula","Supernova remenanat",8.1,"Taurus",8.4,5.5755,79252.2);
         System.out.println(tObject.toString());
     }
 }
