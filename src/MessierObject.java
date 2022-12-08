@@ -2,7 +2,7 @@ public class MessierObject {
 
     String messierNumber;
     String ngcic; // can be None
-    static String name; // can be None
+    String name; // can be None
     String type;
     double distance;
     String constellation;
@@ -45,7 +45,7 @@ distance = dist;
         this.declination = declination;
 
     }
-    private static String toUnits(double integer, int depth, String units) {
+    public static String toUnits(double integer, int depth, String units) {
         //gonna ignore the rules
         if (depth > 1) {integer = Math.abs(integer);
         
@@ -66,10 +66,10 @@ distance = dist;
 	 * 
 	 * DESCRIBE IT MAYBE?
 	**/
-	private static String toUnitsBetter (double UnitInTime, DegreesUnits units) {	
+	public static String toUnitsBetter (double UnitInTime, DegreesUnits units) {	
 		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < 2; i++) {
-			result.append(Math.floor(UnitInTime) + units.getUnit(i) + " "); // Append the number and the unit
+			result.append(String.valueOf(Math.floor(UnitInTime)) + units.getUnit(i) + " "); // Append the number and the unit
 			UnitInTime = (UnitInTime%1)*60; // get the remainder and multiply by 60
 		}
 		// append the last unit rounded to 2 decimal places with the last unit
@@ -78,9 +78,9 @@ distance = dist;
 	}
     @Override
 	public String toString() {
-		return String.format("%d %s %s %s %.2f %s %.2f %s %s", messierNumber,
+		return String.format("%s %s %s %s %.2f %s %.2f %s %s", messierNumber,
 				ngcic, name, type, distance, constellation, magnitude,
-				toUnits(ascension, 0, "hms"), toUnits(declination, 0, "dms"));
+				toUnitsBetter(ascension, DegreesUnits.HMS),toUnitsBetter(declination, DegreesUnits.DMS));
 		// todo!()
 	}
 
@@ -98,7 +98,7 @@ distance = dist;
 	 * this enum will be used to make sure that any future maintainer will not make a mistake and input the wrong string.
 	**/
 	public enum DegreesUnits {
-		DMS("°'\""),
+		DMS("°\'\""),
 		HMS("HMS");
         
         public final String units;

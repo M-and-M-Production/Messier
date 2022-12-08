@@ -96,7 +96,7 @@ M95, "NGC 3351", "-", Barred Spiral galaxy, 31200.0-34000.0, Leo, 9.7, 10h 43m 5
 M96, "NGC 3368", "-", Spiral galaxy, 28000.0-34000.0, Leo, 9.2, 10h 46m 45.7000s, 11° 49' 12.0000"
 M97, "NGC 3587", "Owl Nebula", Planetary nebula, 2.03, Ursa Major, 9.9, 11h 14m 47.7340s, 55° 1' 8.5000"
 M98, "NGC 4192", "-", Spiral galaxy, 44400.0, Coma Berenices, 10.1, 12h 13m 48.2920s, 14° 54' 1.6900"
-M99, "NGC 4254", "St. Catherine€™s Wheel", Spiral galaxy, 44700.0-55700.0, Coma Berenices, 9.9, 12h 18m 49.6000s, 14° 24' 59.0000"
+M99, "NGC 4254", "St. Catherine's Wheel", Spiral galaxy, 44700.0-55700.0, Coma Berenices, 9.9, 12h 18m 49.6000s, 14° 24' 59.0000"
 M100, "NGC 4321", "Mirror Galaxy", Spiral galaxy, 55000.0, Coma Berenices, 9.3, 12h 22m 54.9000s, 15° 49' 21.0000"
 M101, "NGC 5457", "Pinwheel Galaxy", Spiral galaxy, 19100.0-22400.0, Ursa Major, 7.9, 14h 3m 12.6000s, 54° 20' 57.0000"
 M102, "NGC 5866", "Spindle Galaxy", Lenticular galaxy, 50000.0, Draco, 9.9, 15h 6m 29.5000s, 55° 45' 48.0000"
