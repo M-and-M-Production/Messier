@@ -8,7 +8,7 @@ public class MessierTest {
     @Test
     public void testDegreesUnits() {
         assertEquals("°'\"", Messier.DegreesUnits.DMS.units);
-        assertEquals("HMS", Messier.DegreesUnits.HMS.units);
+        assertEquals("hms", Messier.DegreesUnits.HMS.units);
     }
     // test getUnit method of DegreesUnits enum
     @Test
@@ -17,9 +17,9 @@ public class MessierTest {
         assertEquals('°', Messier.DegreesUnits.DMS.getUnit(0));
         assertEquals('\'', Messier.DegreesUnits.DMS.getUnit(1));
         assertEquals('"', Messier.DegreesUnits.DMS.getUnit(2));
-        assertEquals('H', Messier.DegreesUnits.HMS.getUnit(0));
-        assertEquals('M', Messier.DegreesUnits.HMS.getUnit(1));
-        assertEquals('S', Messier.DegreesUnits.HMS.getUnit(2));
+        assertEquals('h', Messier.DegreesUnits.HMS.getUnit(0));
+        assertEquals('m', Messier.DegreesUnits.HMS.getUnit(1));
+        assertEquals('s', Messier.DegreesUnits.HMS.getUnit(2));
     }
     // test toUnitsBetter method of DegreesUnits enum
     @Test
@@ -85,7 +85,7 @@ public class MessierTest {
     // create a test that generates a random hour, minute, second data set and tests the randianToUnits method and the unitsToRandian method
     @Test
     public void testConversion() {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 500; i++) {
             int hour = (int) (Math.random() * 24);
             int minute = (int) (Math.random() * 60);
             double second = Math.random() * 60;
