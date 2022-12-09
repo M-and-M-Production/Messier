@@ -32,7 +32,6 @@ public class MessierReader {
                         tokens[8]));
             }
         }
-
     }
 
     public static void main(String[] args) throws IOException {

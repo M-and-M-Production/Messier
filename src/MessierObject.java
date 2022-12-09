@@ -390,7 +390,7 @@ public class MessierObject implements Comparable<MessierObject> {
 
     @Override
     public int compareTo(MessierObject o) {
-        return (int) (this.magnitude - o.magnitude);
+        return Double.compare(o.magnitude,this.magnitude);
     }
 
     /**

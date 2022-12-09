@@ -9,12 +9,14 @@ public class MessierProgram {
         try {
             reader = new MessierReader(new FileReader("messier.txt",Charset.forName("UTF-8")));
             catalogue = new MessierCatalogue(reader.object);
-            System.out.println(catalogue.toString());
-            System.out.println(catalogue.avgMagOfType("Open cluster"));
-            System.out.println(catalogue.mostDistant("Globular cluster"));
+            //catalogue.sortByMagnitude();catalogue.printAll();
+            //System.out.println(catalogue.avgMagOfType("Open cluster"));
+            //System.out.println(catalogue.mostDistantOfType("Globular cluster"));
+            //System.out.println(catalogue.lowestDecOfConstel("Sagittarius"));
+            //System.out.println(catalogue.nearestStar(45));
         } catch (IOException e) {
             e.printStackTrace();
             return;
         }
-
+    }
 }
