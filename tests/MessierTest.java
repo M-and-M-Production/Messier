@@ -90,8 +90,14 @@ public class MessierTest {
             int minute = (int) (Math.random() * 60);
             double second = Math.random() * 60;
             // make test succeed
-            assertEquals(1, 1);
+            String unitString = String.format("%dh %dm %.4fs", hour, minute, second);
+            assertEquals(unitString, Messier.DegreesUnits.HMS.radiansToUnits(Messier.DegreesUnits.HMS.unitsToRadians(unitString)));
 
+            int degree = (int) (Math.random() * 180 - 90);
+            minute = (int) (Math.random() * 60);
+            second = Math.random() * 60;
+            String unitString2 = String.format("%d° %d' %.4f\"", degree, minute, second);
+            assertEquals(unitString2, Messier.DegreesUnits.DMS.radiansToUnits(Messier.DegreesUnits.DMS.unitsToRadians(unitString2)));
         }
     }
 }
