@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class Messier implements Comparable<Messier> {
@@ -348,10 +349,13 @@ public class Messier implements Comparable<Messier> {
     double ascension;
     double declination;
 
-    Messier(int messierNum,String[] NGCIC,String name, String type,String distance,String conste,Double mag,String asc,String dec) {
+    Messier(int messierNum,String[] ngcIC,String name, String type,String distance,String conste,Double mag,String asc,String dec) {
         messierNumber = messierNum;
-        for(String s : NGCIC){
-            ngcic.add(new NGCIC(s));
+        ngcic = new HashSet<NGCIC>();
+        if (!ngcIC[0].equals("-")) {
+            for(String s : ngcIC){
+                ngcic.add(new NGCIC(s));
+            }
         }
         this.name = name;
         this.type = type;
