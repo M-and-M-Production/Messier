@@ -13,8 +13,8 @@ public class MessierProgram {
             System.out.println(catalogue.avgMagOfType("Open cluster"));
             System.out.println(catalogue.mostDistant("Globular cluster"));
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
+            return;
         }
-    }   
+
 }
