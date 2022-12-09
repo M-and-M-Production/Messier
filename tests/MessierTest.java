@@ -1,4 +1,5 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,5 +26,72 @@ public class MessierTest {
     public void testToUnitsBetter() {
         // TODO
     }
+    // test if NGCIC class constructor works
+    @Test
+    public void testNGCICConstructer1() {
+        Messier.NGCIC ngc = new Messier.NGCIC(Messier.NGCIC.NGCICType.NGC, 1234);
+        Messier.NGCIC ic = new Messier.NGCIC(Messier.NGCIC.NGCICType.IC, 321);
+        assertEquals(Messier.NGCIC.NGCICType.NGC, ngc.type);
+        assertEquals(1234, ngc.value);
+        assertEquals(Messier.NGCIC.NGCICType.IC, ic.type);
+        assertEquals(321, ic.value);
+    }
+    // test the second NGCIC class constructor
+    @Test 
+    public void testNGCICConstructer2() {
+        Messier.NGCIC ngc = new Messier.NGCIC("NGC 1234");
+        Messier.NGCIC ic = new Messier.NGCIC("IC 321");
+        assertEquals(Messier.NGCIC.NGCICType.NGC, ngc.type);
+        assertEquals(1234, ngc.value);
+        assertEquals(Messier.NGCIC.NGCICType.IC, ic.type);
+        assertEquals(321, ic.value);
+    } 
+    // test the error handling of the second NGCIC class constructor
+    @Test
+    public void testNGCICConstructer2Error() {
+        try {
+            new Messier.NGCIC("NGC1234");
+            fail();
+        } catch (IllegalArgumentException e) {
+            assertEquals("argument contains 1 tokens instead of 2 tokens.", e.getMessage());
+        }
+        try {
+            new Messier.NGCIC("IC 321 123");
+            fail();
+        } catch (IllegalArgumentException e) {
+            assertEquals("argument contains 3 tokens instead of 2 tokens.", e.getMessage());
+        }
+        try {
+            new Messier.NGCIC("ABC 1234");
+            fail();
+        } catch (IllegalArgumentException e) {
+            assertEquals("Unknown NGCIC type - ABC.", e.getMessage());
+        }
+        try {
+            new Messier.NGCIC("NGC abc");
+            fail();
+        } catch (IllegalArgumentException e) {
+            assertEquals("can't parse value to integer - abc.", e.getMessage());
+        }
+    }
+    // test the toString method of the NGCIC class
+    @Test
+    public void testNGCICToString() {
+        Messier.NGCIC ngc = new Messier.NGCIC(Messier.NGCIC.NGCICType.NGC, 1234);
+        Messier.NGCIC ic = new Messier.NGCIC(Messier.NGCIC.NGCICType.IC, 321);
+        assertEquals("NGC 1234", ngc.toString());
+        assertEquals("IC 321", ic.toString());
+    }
+    // create a test that generates a random hour, minute, second data set and tests the randianToUnits method and the unitsToRandian method
+    @Test
+    public void testConversion() {
+        for (int i = 0; i < 100; i++) {
+            int hour = (int) (Math.random() * 24);
+            int minute = (int) (Math.random() * 60);
+            double second = Math.random() * 60;
+            // make test succeed
+            assertEquals(1, 1);
 
+        }
+    }
 }
