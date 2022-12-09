@@ -348,7 +348,18 @@ public class Messier implements Comparable<Messier> {
     double ascension;
     double declination;
 
-    Messier() {
+    Messier(int messierNum,String[] NGCIC,String name, String type,String distance,String conste,Double mag,String asc,String dec) {
+        messierNumber = messierNum;
+        for(String s : NGCIC){
+            ngcic.add(new NGCIC(s));
+        }
+        this.name = name;
+        this.type = type;
+        this.distance = new DistanceBounds(distance);
+        constellation = conste;
+        magnitude = mag;
+        ascension = DegreesUnits.HMS.unitsToRadians(asc);
+        declination = DegreesUnits.DMS.unitsToRadians(dec);
         // create a constructor that will store the data in as attributes
     }
 
@@ -366,9 +377,5 @@ public class Messier implements Comparable<Messier> {
     }
 
     public static void main(String[] args) {
-        // create DMS
-        DegreesUnits dms = DegreesUnits.DMS;
-        System.out.println(dms.radiansToUnits(dms.unitsToRadians("45° 33' 0\"")));
-        System.out.println(dms.unitsToRadians("45° 0' 0\""));
     }
 }
