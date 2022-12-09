@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import org.json.JSONObject;
+//import org.json.JSONObject;
 public class MessierCatalogue {
     // create an arrayList of MessierObjects
     ArrayList<MessierObject> collection = new ArrayList<MessierObject>();
@@ -9,7 +9,7 @@ public class MessierCatalogue {
         this.collection = collection;
     }
     
-    }
+    
     /**
      * Add an object to the catalogue
      * Example:
@@ -88,25 +88,25 @@ public class MessierCatalogue {
      * @return MessierCatalogue
      * @see MessierObject
      */
-    public void match(String json) {
-        // convert the json string to a JSONObject
-        JSONObject query = new JSONObject(json);
-        // get the field and value from the JSONObject
-        String[] fields = query.keys();
-        String value;
-        // filter the collection for matching fields in the query
-        ArrayList<MessierObject> result = collection.stream()
-            .filter(object -> {
-                for (String field : fields) {
-                    value = query.getString(field);
-                    if (!object.getField(field).equal(value)) {
-                        return false;
-                    }
-                }
-                return true;
-            })
-            .collect(Collectors.toCollection(ArrayList::new));
-        return MessierCatalogue(result);
-    }
+    // public void match(String json) {
+    //     // convert the json string to a JSONObject
+    //     JSONObject query = new JSONObject(json);
+    //     // get the field and value from the JSONObject
+    //     String[] fields = query.keys();
+    //     String value;
+    //     // filter the collection for matching fields in the query
+    //     ArrayList<MessierObject> result = collection.stream()
+    //         .filter(object -> {
+    //             for (String field : fields) {
+    //                 value = query.getString(field);
+    //                 if (!object.getField(field).equal(value)) {
+    //                     return false;
+    //                 }
+    //             }
+    //             return true;
+    //         })
+    //         .collect(Collectors.toCollection(ArrayList::new));
+    //     return MessierCatalogue(result);
+    // }
 
 }

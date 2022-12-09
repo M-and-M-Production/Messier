@@ -2,9 +2,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 
 public class MessierReader {
-    Messier[] object = new Messier[110];
+    ArrayList<MessierObject> object = new ArrayList<MessierObject>();
 
     MessierReader(FileReader fReader) throws IOException {
         // create a constructor that will store the data in as attributes
@@ -25,11 +26,11 @@ public class MessierReader {
                     }
                 }
                 System.out.println(tokens[1]);
-                object[Integer.parseInt(tokens[0].substring(1)) - 1] = new Messier(
+                object.add(new MessierObject(
                         Integer.parseInt(tokens[0].substring(1)),
                         tokens[1].substring(1, tokens[1].length() - 1).split(", ", -1),
                         tokens[2], tokens[3], tokens[4], tokens[5], Double.parseDouble(tokens[6]), tokens[7],
-                        tokens[8]);
+                        tokens[8]));
             }
         }
 
