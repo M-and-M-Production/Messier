@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 //import org.json.JSONObject;
 public class MessierCatalogue {
     // create an arrayList of MessierObjects
@@ -75,38 +77,21 @@ public class MessierCatalogue {
     public void sortByMagnitude() {
         collection.sort(null);
     }
-    /**
-     * Filter the catalogue by a query
-     * Example:
-     * <blockquote><pre>
-     * MessierCatalogue catalogue = new MessierCatalogue();
-     * MessierObject object = new MessierObject();
-     * catalogue.addObject(object);
-     * catalogue.match("{\"type\": \"GALAXY\"}");
-     * </pre></blockquote>
-     * @param json the query to filter the catalogue by
-     * @return MessierCatalogue
-     * @see MessierObject
-     */
-    // public void match(String json) {
-    //     // convert the json string to a JSONObject
-    //     JSONObject query = new JSONObject(json);
-    //     // get the field and value from the JSONObject
-    //     String[] fields = query.keys();
-    //     String value;
-    //     // filter the collection for matching fields in the query
-    //     ArrayList<MessierObject> result = collection.stream()
-    //         .filter(object -> {
-    //             for (String field : fields) {
-    //                 value = query.getString(field);
-    //                 if (!object.getField(field).equal(value)) {
-    //                     return false;
-    //                 }
-    //             }
-    //             return true;
-    //         })
-    //         .collect(Collectors.toCollection(ArrayList::new));
-    //     return MessierCatalogue(result);
-    // }
 
+    public double avgMagOfType(String Type){
+        Double avg=0.0;
+        avg = collection.stream().filter(obj -> obj.type.equals(Type)).collect(Collectors.averagingDouble(obj -> obj.magnitude));
+        System.out.println(collection.stream().filter(obj -> obj.type.equals(Type)).collect(Collectors.averagingDouble(obj -> obj.magnitude)));
+        return avg;
+    }
+    public String mostDistant(String Type){
+        MessierObject result;
+        
+        collection.sort((o1,o2)-> Double.compare(o2.distance.value(),o1.distance.value()));
+        result = collection.get(0);
+        System.out.println(result.messierNumber);
+
+        return result.toString();
+
+    }
 }
