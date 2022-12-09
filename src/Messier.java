@@ -180,14 +180,20 @@ public class Messier implements Comparable<Messier> {
          * @return the radian is converted to the units of the enum.
          */
         public String radiansToUnits(double unitAsRadians) {
-            double unit = Math.toDegrees(unitAsRadians / conversionFactor);
+            double unit = Math.abs(Math.toDegrees(unitAsRadians / conversionFactor));
             StringBuilder result = new StringBuilder();
+            double number;
             for (int i = 0; i < 2; i++) {
-                result.append(String.format("%.0f%s ", Math.floor(unitAsRadians), getUnit(i))); // Append the number and the unit
-                unit = (unit%1) * 60; // get the remainder and multiply by 60
+                number = Math.floor(unit);
+                result.append(String.format("%.0f%s ", number, getUnit(i))); // Append the number and the unit
+                unit = (unit - number) * 60; // get the remainder and multiply by 60
             }
             // append the last unit rounded to 2 decimal places with the last unit
             result.append(String.format("%.4f%s", unit, getUnit(2)));
+            if (unitAsRadians<0) {
+                result.insert(0, '-');
+            }
+            
             return result.toString();
         }
 
@@ -218,7 +224,8 @@ public class Messier implements Comparable<Messier> {
                 Double[] tokenss = Arrays.stream(tokens)
                         .map(token -> Double.parseDouble(token.substring(0, token.length() - 1)))
                         .toArray(Double[]::new);
-                return Math.toRadians(tokenss[0] + (tokenss[1] + tokenss[2] / 60) / 60) * conversionFactor;
+                        double output = Math.toRadians(Math.abs(tokenss[0]) + (tokenss[1] + tokenss[2] / 60) / 60) * conversionFactor;
+                return tokenss[0] < 0 ?  output*-1:output ;
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException(String.format(
                         "can't parse value to double - %s.",
@@ -361,7 +368,7 @@ public class Messier implements Comparable<Messier> {
     public static void main(String[] args) {
         // create DMS
         DegreesUnits dms = DegreesUnits.DMS;
-        System.out.println(dms.radiansToUnits(dms.unitsToRadians("-45° 33' 0\"")));
+        System.out.println(dms.radiansToUnits(dms.unitsToRadians("45° 33' 0\"")));
         System.out.println(dms.unitsToRadians("45° 0' 0\""));
     }
 }
