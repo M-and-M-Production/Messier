@@ -11,9 +11,13 @@ public class MessierProgram {
             reader = new MessierReader(new FileReader("messier.txt",Charset.forName("UTF-8")));
             catalogue = new MessierCatalogue(reader.object);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
+            return;
         }
+        catalogue.printAll();
+
+        // sort through a collection with a lambda expression
+        catalogue.sort((o1, o2) -> o1.getConstellation().compareTo(o2.getConstellation()));
         
     }
     

@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.stream.Collectors;
 
 public class MessierObject implements Comparable<MessierObject> {
 
@@ -84,10 +85,9 @@ public class MessierObject implements Comparable<MessierObject> {
          * 
          * </blockquote>
          * 
-         * @param value the value to be checked
          * @return the value of the DistanceBounds object
          */
-        public double value(double value) {
+        public double value() {
             return min;
         }
 
@@ -391,5 +391,24 @@ public class MessierObject implements Comparable<MessierObject> {
     @Override
     public int compareTo(MessierObject o) {
         return (int) (this.magnitude - o.magnitude);
+    }
+
+    /**
+     * Returns the string representation of the Messier object.
+     * 
+     * @return the string representation of the Messier object
+     */
+    @Override
+    public String toString() {
+        // join the ngcic objects with a comma and space
+        // turn hashset into a strings
+        // get a length of a hashset
+        // if length is 0 then return -
+        // else return the string
+        String ngcicString = ngcic.size() != 0 ? ngcic.stream().map(NGCIC::toString).collect(Collectors.joining(", ")) : "-";
+        return String.format("M%d, \"%s\", %s, %s, %.2f, %s, %.2f, %s, %s", messierNumber, ngcicString, name, type, distance.value(), constellation, magnitude,DegreesUnits.HMS.radiansToUnits(ascension) , DegreesUnits.DMS.radiansToUnits(declination));
+    }
+    public static void main(String[] args) {
+        // read file
     }
 }
