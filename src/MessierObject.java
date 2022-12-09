@@ -87,7 +87,7 @@ public class MessierObject implements Comparable<MessierObject> {
          * @param value the value to be checked
          * @return the value of the DistanceBounds object
          */
-        public double value(double value) {
+        public double value() {
             return min;
         }
 

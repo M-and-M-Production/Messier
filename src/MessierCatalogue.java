@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 //import org.json.JSONObject;
 public class MessierCatalogue {
     // create an arrayList of MessierObjects
@@ -76,12 +78,20 @@ public class MessierCatalogue {
         collection.sort(null);
     }
 
-    public double avgMag(String Type){
+    public double avgMagOfType(String Type){
         Double avg=0.0;
-        Object[] filter = collection.stream().filter(type -> type.toString() == Type).toArray();
-        System.out.println(collection.stream());
-        System.out.println(filter[0]);
+        avg = collection.stream().filter(obj -> obj.type.equals(Type)).collect(Collectors.averagingDouble(obj -> obj.magnitude));
+        System.out.println(collection.stream().filter(obj -> obj.type.equals(Type)).collect(Collectors.averagingDouble(obj -> obj.magnitude)));
         return avg;
+    }
+    public String mostDistant(String Type){
+        MessierObject result;
+        
+        collection.sort((o1,o2)-> Double.compare(o2.distance.value(),o1.distance.value()));
+        result = collection.get(0);
+        System.out.println(result.messierNumber);
+
+        return result.toString();
 
     }
 }

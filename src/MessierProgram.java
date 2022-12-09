@@ -9,11 +9,12 @@ public class MessierProgram {
         try {
             reader = new MessierReader(new FileReader("messier.txt",Charset.forName("UTF-8")));
             catalogue = new MessierCatalogue(reader.object);
-            System.out.println(catalogue.avgMag("Open clusters"));
+            System.out.println(catalogue.toString());
+            System.out.println(catalogue.avgMagOfType("Open cluster"));
+            System.out.println(catalogue.mostDistant("Globular cluster"));
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
     }   
 }
