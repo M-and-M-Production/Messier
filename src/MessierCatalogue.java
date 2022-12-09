@@ -75,38 +75,13 @@ public class MessierCatalogue {
     public void sortByMagnitude() {
         collection.sort(null);
     }
-    /**
-     * Filter the catalogue by a query
-     * Example:
-     * <blockquote><pre>
-     * MessierCatalogue catalogue = new MessierCatalogue();
-     * MessierObject object = new MessierObject();
-     * catalogue.addObject(object);
-     * catalogue.match("{\"type\": \"GALAXY\"}");
-     * </pre></blockquote>
-     * @param json the query to filter the catalogue by
-     * @return MessierCatalogue
-     * @see MessierObject
-     */
-    // public void match(String json) {
-    //     // convert the json string to a JSONObject
-    //     JSONObject query = new JSONObject(json);
-    //     // get the field and value from the JSONObject
-    //     String[] fields = query.keys();
-    //     String value;
-    //     // filter the collection for matching fields in the query
-    //     ArrayList<MessierObject> result = collection.stream()
-    //         .filter(object -> {
-    //             for (String field : fields) {
-    //                 value = query.getString(field);
-    //                 if (!object.getField(field).equal(value)) {
-    //                     return false;
-    //                 }
-    //             }
-    //             return true;
-    //         })
-    //         .collect(Collectors.toCollection(ArrayList::new));
-    //     return MessierCatalogue(result);
-    // }
 
+    public double avgMag(String Type){
+        Double avg=0.0;
+        Object[] filter = collection.stream().filter(type -> type.toString() == Type).toArray();
+        System.out.println(collection.stream());
+        System.out.println(filter[0]);
+        return avg;
+
+    }
 }
