@@ -349,6 +349,19 @@ public class MessierObject implements Comparable<MessierObject> {
     double ascension;
     double declination;
 
+    /**
+     * Constructs a Messier object with the given parameters.
+     * 
+     * @param messierNum the messier number
+     * @param ngcIC      the NGCIC objects
+     * @param name       the name of the object
+     * @param type       the type of the object
+     * @param distance   the distance bounds of the object
+     * @param conste     the constellation of the object
+     * @param mag        the magnitude of the object
+     * @param asc        the ascension of the object
+     * @param dec        the declination of the object
+     */
     MessierObject(int messierNum,String[] ngcIC,String name, String type,String distance,String conste,Double mag,String asc,String dec) {
         messierNumber = messierNum;
         ngcic = new HashSet<NGCIC>();
@@ -378,8 +391,5 @@ public class MessierObject implements Comparable<MessierObject> {
     @Override
     public int compareTo(MessierObject o) {
         return (int) (this.magnitude - o.magnitude);
-    }
-
-    public static void main(String[] args) {
     }
 }
